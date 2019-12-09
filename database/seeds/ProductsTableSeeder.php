@@ -15,7 +15,7 @@ class ProductsTableSeeder extends Seeder
     {
         Storage::disk('local')->delete(Storage::allFiles());
 
-        factory(Product::class, 5)->create()->each(function ($product) {
+        factory(Product::class, 80)->create()->each(function ($product) {
             $folder = $product->category_id == 1 ? 'homme' : 'femme';
 
             $link = Str::random(12) . '.jpg';
