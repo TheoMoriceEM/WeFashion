@@ -13,7 +13,7 @@ $factory->define(Product::class, function (Faker $faker) {
         'sizes' => implode(',', collect(config('sizes'))->shuffle()->slice(0, rand(1, 4))->toArray()),
         'published' => rand(0, 1),
         'discount' => rand(0, 1),
-        'reference' => $faker->shuffle('0123456789abcdef'),
+        'reference' => Str::random(16),
         'category_id' => rand(1, 2)
     ];
 });
