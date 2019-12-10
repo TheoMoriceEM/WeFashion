@@ -16,12 +16,14 @@ class CategoriesTableSeeder extends Seeder
     {
         DB::table($this->table)->insert([
             'name' => 'Homme',
+            'slug' => 'homme',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);
 
         DB::table($this->table)->insert([
             'name' => 'Femme',
+            'slug' => 'femme',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);
