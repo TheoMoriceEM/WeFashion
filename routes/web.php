@@ -11,6 +11,4 @@
 |
 */
 
-Route::get('/', function () {
-    return view('front.product-detail');
-});
+Route::get('/', 'FrontController@home');

@@ -17,4 +17,14 @@ class Product extends Model
     public function picture() {
         return $this->hasOne(Picture::class);
     }
+
+    public function scopePublished($query)
+    {
+        return $query->where('published', '1');
+    }
+
+    public function scopeOnDiscount($query)
+    {
+        return $query->where('discount', '1');
+    }
 }
