@@ -1,7 +1,7 @@
 <footer class="bg-light">
     <div class="container">
         <div class="row">
-            <div class="col-4">
+            <div class="col-12 col-sm-4">
                 <p class="text-uppercase font-weight-bold">Informations</p>
                 <ul class="list-unstyled">
                     <li>
@@ -15,7 +15,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="col-4">
+            <div class="col-12 col-sm-4">
                 <p class="text-uppercase font-weight-bold">Service client</p>
                 <ul class="list-unstyled">
                     <li>
@@ -29,7 +29,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="col-4">
+            <div class="col-12 col-sm-4">
                 <p class="text-uppercase font-weight-bold">Réseaux sociaux</p>
                 <ul class="list-unstyled">
                     <li>
