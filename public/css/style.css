@@ -7,13 +7,3 @@
 footer a {
     color: black;
 }
-
-/* Product list */
-.product-name {
-    color: black;
-    font-size: 1.2rem;
-}
-
-.product-price {
-    color: #636363;
-}

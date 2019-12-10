@@ -1,7 +1,16 @@
 @extends('layouts.master')
 
 @section('CSS')
+    <style>
+        .product-name {
+            color: black;
+            font-size: 1.2rem;
+        }
 
+        .product-price {
+            color: #636363;
+        }
+    </style>
 @endsection
 
 @section('content')
