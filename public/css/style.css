@@ -1,3 +1,8 @@
+/* Reset CSS */
+p {
+    margin: 0;
+}
+
 /* Navbar */
 .navbar-light .navbar-brand {
     color: #66EB9A;

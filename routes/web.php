@@ -12,5 +12,5 @@
 */
 
 Route::get('/', function () {
-    return view('front.product-list');
+    return view('front.product-detail');
 });
