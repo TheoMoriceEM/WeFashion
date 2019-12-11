@@ -9,15 +9,15 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link text-uppercase" href="#">Produits</a>
+                        <a class="nav-link text-uppercase" href="{{ route('admin.product.index') }}">Produits</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-uppercase" href="#">Catégories</a>
+                        <a class="nav-link text-uppercase" href="{{ route('admin.category.index') }}">Catégories</a>
                     </li>
                 </ul>
             </div>
 
-            <a href="#">
+            <a href="{{ route('homepage') }}" target="__blank">
                 <i class="fas fa-globe fa-lg"></i>
             </a>
         </div>
