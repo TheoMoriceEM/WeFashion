@@ -19,21 +19,21 @@ class FrontController extends Controller
         });
     }
 
-    public function home()
+    public function index()
     {
         $products = Product::published()->paginate($this->paginate);
 
         return view('front.product-list', ['products' => $products]);
     }
 
-    public function onDiscount()
+    public function indexDiscount()
     {
         $products = Product::published()->onDiscount()->paginate($this->paginate);
 
         return view('front.product-list', ['products' => $products]);
     }
 
-    public function category($slug)
+    public function indexCategory($slug)
     {
         $products = Product::published()->get();
 
@@ -47,7 +47,7 @@ class FrontController extends Controller
         return view('front.product-list', ['products' => $categoryProducts]);
     }
 
-    public function product($slug)
+    public function show($slug)
     {
         $product = Product::where('slug', $slug)->first();
         $sizes = explode(',', $product->sizes);
