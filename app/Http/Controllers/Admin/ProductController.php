@@ -8,6 +8,8 @@ use App\Http\Controllers\Controller;
 
 class ProductController extends Controller
 {
+    private $paginate = 15;
+
     public function __construct()
     {
         view()->composer('layouts.master', function ($view) {
@@ -22,7 +24,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view('admin.product.index');
+        $products = Product::paginate($this->paginate);
+
+        return view('admin.product.index', ['products' => $products]);
     }
 
     /**

@@ -14,23 +14,29 @@
         <div class="col-2 font-weight-bold">Prix</div>
         <div class="col-2 font-weight-bold">État</div>
     </div>
-    <div class="row">
-        <div class="col-2 col-sm-3 col-md-4 col-lg-3">Lorem ipsum dolor</div>
-        <div class="col-2 col-lg-3">Homme</div>
-        <div class="col-2">15.29€</div>
-        <div class="col-2">
-            <span class="badge badge-success">Publié</span>
+    @foreach ($products as $product)
+        <div class="row">
+            <div class="col-2 col-sm-3 col-md-4 col-lg-3">{{ $product->name }}</div>
+            <div class="col-2 col-lg-3">{{ $product->category->name }}</div>
+            <div class="col-2">{{ $product->price }}€</div>
+            <div class="col-2">
+                @if ($product->published)
+                    <span class="badge badge-success">Publié</span>
+                @else
+                    <span class="badge badge-danger">Non publié</span>
+                @endif
+            </div>
+            <a href="#">
+                <div class="col-1">
+                    <i class="fas fa-edit"></i>
+                </div>
+            </a>
+            <a href="#">
+                <div class="col-1">
+                    <i class="fas fa-trash-alt"></i>
+                </div>
+            </a>
         </div>
-        <a href="#">
-            <div class="col-1">
-                <i class="fas fa-edit"></i>
-            </div>
-        </a>
-        <a href="#">
-            <div class="col-1">
-                <i class="fas fa-trash-alt"></i>
-            </div>
-        </a>
-    </div>
-    <hr>
+        <hr>
+    @endforeach
 @endsection
