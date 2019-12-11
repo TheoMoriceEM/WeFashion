@@ -47,8 +47,11 @@ class FrontController extends Controller
         return view('front.product-list', ['products' => $categoryProducts]);
     }
 
-    // public function product()
-    // {
-    //     # code...
-    // }
+    public function product($slug)
+    {
+        $product = Product::where('slug', $slug)->first();
+        $sizes = explode(',', $product->sizes);
+
+        return view('front.product-detail', ['product' => $product, 'sizes' => $sizes]);
+    }
 }

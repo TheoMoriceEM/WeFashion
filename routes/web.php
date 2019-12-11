@@ -14,3 +14,4 @@
 Route::get('/', 'FrontController@home')->name('home');
 Route::get('discount', 'FrontController@onDiscount')->name('discount');
 Route::get('category/{slug}', 'FrontController@category')->name('category');
+Route::get('product/{slug}', 'FrontController@product')->name('product');

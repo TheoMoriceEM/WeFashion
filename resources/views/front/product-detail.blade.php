@@ -15,31 +15,28 @@
 @section('content')
     <div class="row">
         <div class="col-12 col-md-6">
-            <img src="https://picsum.photos/800" alt="lorem ipsum" class="w-100">
+            <img src="{{ asset('storage/' . $product->picture->link) }}" alt="{{ $product->picture->title }}" class="w-100">
         </div>
         <div class="col-12 col-md-6 my-4 my-md-0">
-            <a href="#" class="badge badge-primary">Catégorie</a>
-            <p id="productName">Nom du produit</p>
-            <p id="productPrice">59.86€</p>
-            <span class="badge badge-info text-uppercase">En solde !!!</span>
+            <a href="{{ route('category', $product->category->slug) }}" class="badge badge-primary">{{ $product->category->name }}</a>
+            <p id="productName">{{ $product->name }}</p>
+            <p id="productPrice">{{ $product->price }}€</p>
+            @if ($product->discount)
+                <span class="badge badge-info text-uppercase">En solde !!!</span>
+            @endif
             <select class="custom-select my-4">
                 <option selected disabled>Taille</option>
-                <option value="XS">XS</option>
-                <option value="S">S</option>
-                <option value="M">M</option>
-                <option value="L">L</option>
-                <option value="XL">XL</option>
+                @foreach ($sizes as $size)
+                    <option value="{{ $size }}">{{ $size }}</option>
+                @endforeach
             </select>
             <button type="button" class="btn btn-secondary btn-lg">Acheter</button>
         </div>
     </div>
     <div class="row mt-3">
         <div class="col-12">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero provident nulla omnis ex possimus quisquam itaque cum nostrum quaerat, eos molestias ea laborum. Impedit repellat tenetur qui sapiente, praesentium natus!</p>
-            <p class="mt-2"><span class="font-weight-bold">Référence produit : </span>123456789azertyu</p>
+            <p>{{ $product->description }}</p>
+            <p class="mt-2"><span class="font-weight-bold">Référence produit : </span>{{ $product->reference }}</p>
         </div>
     </div>
 @endsection
-
-{{-- description
-reference --}}

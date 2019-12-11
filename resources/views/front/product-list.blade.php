@@ -31,7 +31,7 @@
     <div class="row">
         @foreach ($products as $product)
             <div class="col-12 col-sm-6 col-md-4 mb-4">
-                <a href="#">
+                <a href="{{ route('product', $product->slug) }}">
                     <div class="product-img" style="background-image: url('{{ asset('storage/' . $product->picture->link) }}')"></div>
                     <p class="product-name">{{ $product->name }}</p>
                     <p class="product-price">{{ $product->price }}€</p>
