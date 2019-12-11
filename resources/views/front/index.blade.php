@@ -15,10 +15,6 @@
         .product-price {
             color: #636363;
         }
-
-        .pagination {
-            flex-wrap: wrap;
-        }
     </style>
 @endsection
 

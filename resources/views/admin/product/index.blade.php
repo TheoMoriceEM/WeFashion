@@ -3,7 +3,7 @@
 @section('content')
     <div class="row">
         <div class="col-12 text-right">
-            <a href="#">
+            <a href="{{ route('admin.product.create') }}">
                 <button type="button" class="btn btn-primary">Nouveau</button>
             </a>
         </div>
@@ -26,12 +26,12 @@
                     <span class="badge badge-danger">Non publié</span>
                 @endif
             </div>
-            <a href="#">
+            <a href="{{ route('admin.product.edit', $product->id) }}">
                 <div class="col-1">
                     <i class="fas fa-edit"></i>
                 </div>
             </a>
-            <a href="#">
+            <a href="{{ route('admin.product.destroy', $product->id) }}">
                 <div class="col-1">
                     <i class="fas fa-trash-alt"></i>
                 </div>
@@ -39,4 +39,9 @@
         </div>
         <hr>
     @endforeach
+    <div class="row">
+        <div class="col-12">
+            {{ $products->links() }}
+        </div>
+    </div>
 @endsection

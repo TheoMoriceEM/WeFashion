@@ -11,3 +11,8 @@ a {
 .navbar-light .navbar-brand {
     color: #66EB9A;
 }
+
+/* Index views */
+.pagination {
+    flex-wrap: wrap;
+}
