@@ -13,7 +13,11 @@ class FrontController extends Controller
 
     public function __construct()
     {
-        view()->composer('partials.navbar', function ($view) {
+        view()->composer('layouts.master', function ($view) {
+            $view->with('part', 'front');
+        });
+
+        view()->composer('partials.navbar-front', function ($view) {
             $categories = Category::pluck('name', 'slug')->all();
             $view->with('categories', $categories);
         });
