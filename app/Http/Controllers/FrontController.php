@@ -5,10 +5,19 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Product;
+use App\Category;
 
 class FrontController extends Controller
 {
     private $paginate = 6;
+
+    public function __construct()
+    {
+        view()->composer('partials.navbar', function ($view) {
+            $categories = Category::pluck('name', 'slug')->all();
+            $view->with('categories', $categories);
+        });
+    }
 
     public function home()
     {

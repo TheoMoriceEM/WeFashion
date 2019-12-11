@@ -11,12 +11,11 @@
           <li class="nav-item">
             <a class="nav-link text-uppercase" href="{{ route('discount') }}">Soldes</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link text-uppercase" href="#">Homme</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-uppercase" href="#">Femme</a>
-          </li>
+          @foreach ($categories as $slug => $name)
+            <li class="nav-item">
+                <a class="nav-link text-uppercase" href="{{ route('category', $slug) }}">{{ $name }}</a>
+            </li>
+          @endforeach
         </ul>
       </div>
     </div>
