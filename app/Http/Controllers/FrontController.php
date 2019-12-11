@@ -27,14 +27,14 @@ class FrontController extends Controller
     {
         $products = Product::published()->paginate($this->paginate);
 
-        return view('front.product-list', ['products' => $products]);
+        return view('front.index', ['products' => $products]);
     }
 
     public function indexDiscount()
     {
         $products = Product::published()->onDiscount()->paginate($this->paginate);
 
-        return view('front.product-list', ['products' => $products, 'active' => 'discount']);
+        return view('front.index', ['products' => $products, 'active' => 'discount']);
     }
 
     public function indexCategory($slug)
@@ -48,7 +48,7 @@ class FrontController extends Controller
 
         $categoryProducts = Product::whereIn('id', $idArray)->paginate($this->paginate);
 
-        return view('front.product-list', ['products' => $categoryProducts, 'active' => $slug]);
+        return view('front.index', ['products' => $categoryProducts, 'active' => $slug]);
     }
 
     public function show($slug)
@@ -56,6 +56,6 @@ class FrontController extends Controller
         $product = Product::where('slug', $slug)->first();
         $sizes = explode(',', $product->sizes);
 
-        return view('front.product-detail', ['product' => $product, 'sizes' => $sizes]);
+        return view('front.show', ['product' => $product, 'sizes' => $sizes]);
     }
 }
