@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'FrontController@index')->name('home');
+Route::get('/', 'FrontController@index')->name('homepage');
 Route::get('discount', 'FrontController@indexDiscount')->name('discount');
 Route::get('category/{slug}', 'FrontController@indexCategory')->name('category');
 Route::get('product/{slug}', 'FrontController@show')->name('product');
@@ -23,3 +23,5 @@ Route::middleware('auth')->namespace('Admin')->prefix('admin')->name('admin.')->
 });
 
 Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
