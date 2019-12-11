@@ -3,12 +3,11 @@ p {
     margin: 0;
 }
 
+a {
+    color: black;
+}
+
 /* Navbar */
 .navbar-light .navbar-brand {
     color: #66EB9A;
-}
-
-/* Footer */
-footer a {
-    color: black;
 }

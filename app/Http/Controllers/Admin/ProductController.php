@@ -8,6 +8,13 @@ use App\Http\Controllers\Controller;
 
 class ProductController extends Controller
 {
+    public function __construct()
+    {
+        view()->composer('layouts.master', function ($view) {
+            $view->with('part', 'back');
+        });
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +22,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        return view('layouts.master');
     }
 
     /**
