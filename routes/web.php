@@ -17,5 +17,3 @@ Route::get('category/{slug}', 'FrontController@indexCategory')->name('category')
 Route::get('product/{slug}', 'FrontController@show')->name('product');
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
