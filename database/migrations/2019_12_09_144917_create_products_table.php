@@ -20,7 +20,7 @@ class CreateProductsTable extends Migration
             $table->string('name', 100);
             $table->text('description')->nullable();
             $table->unsignedDecimal('price', 6, 2);
-            $table->set('sizes', ['XS', 'S', 'M', 'L', 'XL']);
+            $table->set('sizes', config('sizes'));
             $table->boolean('published');
             $table->boolean('discount');
             $table->string('reference', 16);
