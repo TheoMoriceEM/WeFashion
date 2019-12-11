@@ -11,4 +11,6 @@
 |
 */
 
-Route::get('/', 'FrontController@home');
+Route::get('/', 'FrontController@home')->name('home');
+Route::get('discount', 'FrontController@onDiscount')->name('discount');
+Route::get('category/{slug}', 'FrontController@category')->name('category');
