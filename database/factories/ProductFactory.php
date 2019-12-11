@@ -4,10 +4,12 @@
 
 use App\Product;
 use Faker\Generator as Faker;
+use Illuminate\Support\Str;
 
 $factory->define(Product::class, function (Faker $faker) {
     return [
         'name' => $faker->sentence(),
+        'slug' => Str::slug($faker->sentence(), '-'),
         'description' => $faker->paragraph(),
         'price' => $faker->randomFloat(2, 1, 300),
         'sizes' => implode(',', collect(config('sizes'))->shuffle()->slice(0, rand(1, 4))->toArray()),

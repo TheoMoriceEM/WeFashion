@@ -46,4 +46,9 @@ class FrontController extends Controller
 
         return view('front.product-list', ['products' => $categoryProducts]);
     }
+
+    // public function product()
+    // {
+    //     # code...
+    // }
 }

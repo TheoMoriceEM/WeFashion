@@ -18,6 +18,7 @@ class CreateProductsTable extends Migration
             $table->unsignedInteger('category_id');
             $table->foreign('category_id')->references('id')->on('categories');
             $table->string('name', 100);
+            $table->string('slug', 100);
             $table->text('description')->nullable();
             $table->unsignedDecimal('price', 6, 2);
             $table->set('sizes', config('sizes'));
