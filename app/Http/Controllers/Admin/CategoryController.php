@@ -8,6 +8,8 @@ use App\Http\Controllers\Controller;
 
 class CategoryController extends Controller
 {
+    private $paginate = 15;
+
     public function __construct()
     {
         view()->composer('layouts.master', function ($view) {
@@ -22,7 +24,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return view('admin.category.index');
+        $categories = Category::paginate($this->paginate);
+
+        return view('admin.category.index', ['categories' => $categories]);
     }
 
     /**
