@@ -8,11 +8,11 @@
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
+          <li class="nav-item @if(isset($active) && $active == 'discount') active @endif">
             <a class="nav-link text-uppercase" href="{{ route('discount') }}">Soldes</a>
           </li>
           @foreach ($categories as $slug => $name)
-            <li class="nav-item">
+            <li class="nav-item @if(isset($active) && $active == $slug) active @endif">
                 <a class="nav-link text-uppercase" href="{{ route('category', $slug) }}">{{ $name }}</a>
             </li>
           @endforeach
