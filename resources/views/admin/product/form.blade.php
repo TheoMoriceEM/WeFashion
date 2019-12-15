@@ -28,26 +28,12 @@
 
                 <div class="form-group">
                     <label>Tailles</label> <br>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="XS" value="XS">
-                        <label class="form-check-label" for="XS" name="sizes">XS</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="S" value="S">
-                        <label class="form-check-label" for="S" name="sizes">S</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="M" value="M">
-                        <label class="form-check-label" for="M" name="sizes">M</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="L" value="L">
-                        <label class="form-check-label" for="L" name="sizes">L</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="XL" value="XL">
-                        <label class="form-check-label" for="XL" name="sizes">XL</label>
-                    </div>
+                    @foreach ($sizes as $size)
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="{{ $size }}" value="{{ $size }}">
+                            <label class="form-check-label" for="{{ $size }}" name="sizes">{{ $size }}</label>
+                        </div>
+                    @endforeach
                 </div>
 
             </div>
@@ -57,8 +43,9 @@
                     <label for="category_id">Catégorie</label>
                     <select class="custom-select" name="category_id">
                         <option selected disabled>Catégorie</option>
-                        <option value="1">Homme</option>
-                        <option value="2">Femme</option>
+                        @foreach ($categories as $category)
+                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                        @endforeach
                     </select>
                 </div>
 

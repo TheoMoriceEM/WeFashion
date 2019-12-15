@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Product;
+use App\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -36,7 +37,10 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('admin.product.form');
+        $sizes = config('sizes');
+        $categories = Category::all();
+
+        return view('admin.product.form', ['sizes' => $sizes, 'categories' => $categories]);
     }
 
     /**
@@ -47,7 +51,29 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'title'         => 'required',
+            'description'   => 'required|string',
+            'genre_id'      => 'integer',
+            'authors'       => 'array',
+            'authors.*'     => 'integer',
+            'status'        => Rule::in(['published', 'unpublished']),
+            'picture'       => 'image'
+        ]);
+
+        $book = Book::create($request->all());
+        $book->authors()->attach($request->authors);
+
+        $im = $request->file('picture');
+        if (!empty($im)) {
+            $link = $im->store('');
+            $book->picture()->create([
+                'link' => $link,
+                'title' => $request->title_image ?? $request->title
+            ]);
+        }
+
+        return redirect()->route('book.index')->with('message', 'success');
     }
 
     /**
