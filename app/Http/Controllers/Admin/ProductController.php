@@ -6,6 +6,7 @@ use App\Product;
 use App\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
@@ -52,28 +53,34 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'title'         => 'required',
-            'description'   => 'required|string',
-            'genre_id'      => 'integer',
-            'authors'       => 'array',
-            'authors.*'     => 'integer',
-            'status'        => Rule::in(['published', 'unpublished']),
-            'picture'       => 'image'
+            'name'          => 'required|string',
+            'description'   => 'nullable|string',
+            'price'         => 'required|numeric',
+            'reference'     => 'required|string',
+            'sizes'         => 'required|array',
+            'sizes.*'       => 'string',
+            'category_id'   => 'required|integer',
+            'published'     => 'required|integer',
+            'discount'      => 'required|integer',
+            'picture'       => 'file|mimes:jpeg,bmp,png',
+            'picture_title' => 'nullable|string'
         ]);
 
-        $book = Book::create($request->all());
-        $book->authors()->attach($request->authors);
+        $inputs = $request->all();
+        $inputs['sizes'] = implode(',', $inputs['sizes']);
+        $inputs['slug'] = Str::slug($inputs['name'], '-');
+        $product = Product::create($inputs);
 
-        $im = $request->file('picture');
-        if (!empty($im)) {
-            $link = $im->store('');
-            $book->picture()->create([
+        $picture = $request->file('picture');
+        if (!empty($picture)) {
+            $link = $picture->store('');
+            $product->picture()->create([
                 'link' => $link,
-                'title' => $request->title_image ?? $request->title
+                'title' => $request->picture_title ?? $request->name
             ]);
         }
 
-        return redirect()->route('book.index')->with('message', 'success');
+        return redirect()->route('admin.product.index')->with('message', 'Le produit a bien été créé.');
     }
 
     /**

@@ -1,6 +1,10 @@
 @extends('layouts.master')
 
 @section('content')
+    @if (Session::has('message'))
+        @include('admin.partials.flash-message')
+    @endif
+
     <div class="row">
         <div class="col-12 text-right">
             <a href="{{ route('admin.product.create') }}">
