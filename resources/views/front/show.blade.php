@@ -15,7 +15,9 @@
 @section('content')
     <div class="row">
         <div class="col-12 col-md-6">
-            <img src="{{ asset('storage/' . $product->picture->link) }}" alt="{{ $product->picture->title }}" class="w-100">
+            @if($product->picture)
+                <img src="{{ asset('storage/' . $product->picture->link) }}" alt="{{ $product->picture->title }}" class="w-100">
+            @endif
         </div>
         <div class="col-12 col-md-6 my-4 my-md-0">
             <a href="{{ route('category', $product->category->slug) }}" class="badge badge-primary">{{ $product->category->name }}</a>
