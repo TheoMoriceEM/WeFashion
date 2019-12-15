@@ -35,11 +35,15 @@
                     <i class="fas fa-edit"></i>
                 </div>
             </a>
-            <a href="{{ route('admin.product.destroy', $product->id) }}">
-                <div class="col-1">
-                    <i class="fas fa-trash-alt"></i>
-                </div>
-            </a>
+            <div class="col-1">
+                <form action="{{ route('admin.product.destroy', $product->id) }}" method="post" class="delete-form">
+                    <input name="_method" type="hidden" value="DELETE">
+                    {{ csrf_field() }}
+                    <button type="submit" class="bg-transparent border-0">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </form>
+            </div>
         </div>
         <hr>
     @endforeach
@@ -48,4 +52,8 @@
             {{ $products->links() }}
         </div>
     </div>
+@endsection
+
+@section('JS')
+    <script src="{{ asset("js/confirm.js") }}"></script>
 @endsection
