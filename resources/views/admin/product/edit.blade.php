@@ -13,7 +13,7 @@
         <input name="_method" type="hidden" value="PUT">
         {{ csrf_field() }}
         <div class="row">
-            <div class="col-8">
+            <div class="col-12 col-md-8">
 
                 <div class="form-group">
                     <label for="name">Nom</label>
@@ -49,7 +49,7 @@
                 </div>
 
             </div>
-            <div class="col-4">
+            <div class="col-12 col-md-4">
 
                 <div class="form-group">
                     <label for="category_id">Catégorie</label>
@@ -112,4 +112,9 @@
             </div>
         </div>
     </form>
+    <a href="{{ route('admin.product.index') }}">
+        <button class="btn btn-secondary mt-5">
+            <i class="fas fa-arrow-circle-left"></i> Retour
+        </button>
+    </a>
 @endsection

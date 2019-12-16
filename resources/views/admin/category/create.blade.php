@@ -21,4 +21,9 @@
             </div>
         </div>
     </form>
+    <a href="{{ route('admin.category.index') }}">
+        <button class="btn btn-secondary mt-2">
+            <i class="fas fa-arrow-circle-left"></i> Retour
+        </button>
+    </a>
 @endsection
