@@ -17,7 +17,7 @@
 
                 <div class="form-group">
                     <label for="name">Nom</label>
-                    <input type="text" maxlength="100" class="form-control" id="name" name="name" value="{{ $product->name }}" required>
+                    <input type="text" minlength="5" maxlength="100" class="form-control" id="name" name="name" value="{{ $product->name }}" required>
                 </div>
 
                 <div class="form-group">
