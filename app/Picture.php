@@ -11,6 +11,7 @@ class Picture extends Model
         'title'
     ];
 
+    // Get the product associated with the image
     public function product() {
         return $this->belongsTo(Product::class);
     }

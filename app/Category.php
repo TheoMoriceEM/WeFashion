@@ -12,6 +12,7 @@ class Category extends Model
         'name', 'slug'
     ];
 
+    // Get the products associated with the category
     public function products() {
         return $this->hasMany(Product::class);
     }

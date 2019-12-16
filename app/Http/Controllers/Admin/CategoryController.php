@@ -10,7 +10,7 @@ use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
-    private $paginate = 15;
+    private $paginate = 15; // Number of items displayed per page
 
     public function __construct()
     {

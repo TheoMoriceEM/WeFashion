@@ -11,7 +11,7 @@ use Storage;
 
 class ProductController extends Controller
 {
-    private $paginate = 15;
+    private $paginate = 15; // Number of items displayed per page
 
     public function __construct()
     {

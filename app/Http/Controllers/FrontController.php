@@ -9,7 +9,7 @@ use App\Category;
 
 class FrontController extends Controller
 {
-    private $paginate = 6;
+    private $paginate = 6; // Number of items displayed per page
 
     public function __construct()
     {
@@ -23,6 +23,7 @@ class FrontController extends Controller
         });
     }
 
+    // Homepage
     public function index()
     {
         $products = Product::published()->paginate($this->paginate);
@@ -30,6 +31,7 @@ class FrontController extends Controller
         return view('front.index', ['products' => $products]);
     }
 
+    // Discount items page
     public function indexDiscount()
     {
         $products = Product::published()->onDiscount()->paginate($this->paginate);
@@ -37,6 +39,7 @@ class FrontController extends Controller
         return view('front.index', ['products' => $products, 'active' => 'discount']);
     }
 
+    // Category page
     public function indexCategory($slug)
     {
         $products = Product::published()->get();
@@ -51,6 +54,7 @@ class FrontController extends Controller
         return view('front.index', ['products' => $categoryProducts, 'active' => $slug]);
     }
 
+    // Single product page
     public function show($slug)
     {
         $product = Product::where('slug', $slug)->first();
