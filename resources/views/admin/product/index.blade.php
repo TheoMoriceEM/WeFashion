@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-    @if (Session::has('message'))
+    @if (Session::has('message') || Session::has('error'))
         @include('admin.partials.flash-message')
     @endif
 

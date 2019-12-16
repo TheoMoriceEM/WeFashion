@@ -1,6 +1,10 @@
 @extends('layouts.master')
 
 @section('content')
+    @if (Session::has('message') || Session::has('error'))
+        @include('admin.partials.flash-message')
+    @endif
+
     <div class="row">
         <div class="col-12 text-right">
             <a href="{{ route('admin.category.create') }}">
@@ -19,12 +23,23 @@
                     <i class="fas fa-edit"></i>
                 </div>
             </a>
-            <a href="{{ route('admin.category.destroy', $category->id) }}">
-                <div class="col-1">
+            <form action="{{ route('admin.category.destroy', $category->id) }}" method="post" class="delete-form">
+                <input name="_method" type="hidden" value="DELETE">
+                {{ csrf_field() }}
+                <button type="submit" class="bg-transparent border-0">
                     <i class="fas fa-trash-alt"></i>
-                </div>
-            </a>
+                </button>
+            </form>
         </div>
         <hr>
     @endforeach
+    <div class="row">
+        <div class="col-12">
+            {{ $categories->links() }}
+        </div>
+    </div>
+@endsection
+
+@section('JS')
+    <script src="{{ asset("js/confirm.js") }}"></script>
 @endsection

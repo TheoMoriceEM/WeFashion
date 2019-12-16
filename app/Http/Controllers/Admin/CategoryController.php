@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Product;
 use App\Category;
-use Illuminate\Http\Request;
+use App\Http\Requests\CategoryRequest;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
@@ -36,7 +38,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.category.create');
     }
 
     /**
@@ -45,9 +47,13 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CategoryRequest $request)
     {
-        //
+        $inputs = $request->validated();
+        $inputs['slug'] = Str::slug($inputs['name'], '-');
+        Category::create($inputs);
+
+        return redirect()->route('admin.category.index')->with('message', 'La catégorie a bien été créée.');
     }
 
     /**
@@ -69,7 +75,9 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        $category = Category::find($category->id);
+
+        return view('admin.category.edit', ['category' => $category]);
     }
 
     /**
@@ -79,9 +87,13 @@ class CategoryController extends Controller
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(CategoryRequest $request, Category $category)
     {
-        //
+        $inputs = $request->validated();
+        $inputs['slug'] = Str::slug($inputs['name'], '-');
+        $category->update($inputs);
+
+        return redirect()->route('admin.category.index')->with('message', 'La catégorie a bien été modifiée.');
     }
 
     /**
@@ -92,6 +104,11 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        if ($category->products()->first()) {
+            return redirect()->route('admin.category.index')->with('error', "La catégorie n'a pas pu être supprimée parce qu'un ou plusieurs produits y sont encore rattachés.");
+        } else {
+            Category::destroy($category->id);
+            return redirect()->route('admin.category.index')->with('message', 'La catégorie a bien été supprimée.');
+        }
     }
 }
