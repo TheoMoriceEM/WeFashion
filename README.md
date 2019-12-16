@@ -5,7 +5,7 @@ Adresse du projet GitHub : https://github.com/TheoMoriceEM/WeFashion
 
 Le MCD est situé à la racine du projet sous format mwb (MySQL WorkBench). Pour pouvoir le consulter, téléchargez le logiciel ici : https://dev.mysql.com/downloads/workbench/
 
-*Procédure à suivre pour installer le projet en local :*
+**Procédure à suivre pour installer le projet en local :**
 1. Créez une base de données intitulée "wefashion" sur votre serveur MySQL.
 2. Tapez la commande "npm install" pour installer les dépendances de NPM.
 3. Tapez la commande "composer install" pour installer les dépendances de Composer.
